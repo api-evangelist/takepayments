@@ -1,0 +1,136 @@
+aid: takepayments
+name: takepayments
+review:
+  question: Does takepayments publish a real public developer portal with a downloadable OpenAPI/Swagger definition?
+  answer: false
+  date: '2026-07-24'
+  reviewer: API Evangelist
+findings:
+  summary: |
+    takepayments (a trading name of Payzone UK Limited) is a United Kingdom
+    payment gateway and merchant-services provider. It runs a genuine public
+    developer surface across two hosts: a Developer Support hub at
+    www.takepayments.com/developer-support/ (HTTP 200) for the online payment
+    gateway, and a dedicated developer portal at developer.takepayments.com
+    (HTTP 200) for its integrated Terminal API. Neither surface publishes a
+    downloadable OpenAPI/Swagger, Postman collection, GraphQL SDL, or .proto;
+    the API reference is documentation-only (HTML pages plus PDF integration
+    guides and PHP code packs). Zero machine-readable API specs were harvested.
+
+    Two distinct API products exist. (1) The Gateway API for e-commerce card
+    acceptance is offered as Hosted (redirect) and Direct (server-to-server /
+    transparent redirect) integrations, transported as SOAP v1.1 XML and HTTPS
+    form-POST, authenticated with a merchant ID plus a pre-shared-key signature
+    hash. Its reference is the PDF integration guide
+    (mapi.takepayments.com/media/.../takepayments-gateway-integration-guide_v3-02_07-22.pdf,
+    HTTP 200) and downloadable Hosted/Direct code packs (HTTP 200). (2) The
+    Terminal API is a modern REST/JSON surface hosted on Azure API Management
+    for pairing and driving card machines (Move5000, PAX A920 Pro), with
+    documented operations for Authentication, Start a Transaction, Pairing,
+    Split Bill & Gratuity, and Pay at Table.
+
+    Auth model differs by product. The Gateway uses merchant ID + pre-shared-key
+    hash signature over SOAP/form-POST. The Terminal API uses OAuth 2.0
+    client-credentials issued by Microsoft Azure AD; the merchant supplies a
+    Client Id, Client Secret, and Scope to fetch a JWT from
+    login.microsoftonline.com, then passes it as an Authorization Bearer header.
+    Confirmed base URLs: sandbox
+    https://takepayments-integrated-sandbox-apim.azure-api.net/ and production
+    https://takepayments-integrated-prod-apim.azure-api.net/ (HTTP 401 without a
+    token, confirming a live, auth-gated host). No webhook/event catalog or
+    AsyncAPI was found. A github.com/takepayments organization exists but has
+    zero public repositories. Merchant onboarding is sales-led, not open
+    self-serve. Home market is the United Kingdom.
+  homeMarket: United Kingdom
+  developerPortal:
+    url: https://developer.takepayments.com/
+    httpStatus: 200
+    confirmed: true
+  gatewayDeveloperSupport:
+    url: https://www.takepayments.com/developer-support/
+    httpStatus: 200
+  downloadableSpecs:
+    openapi: false
+    swagger: false
+    postman: false
+    graphql: false
+    grpc: false
+    asyncapi: false
+    count: 0
+    note: >-
+      API reference is documentation-only. The gateway ships PDF integration
+      guides and PHP code packs; the Terminal API ships HTML reference pages on
+      developer.takepayments.com. No machine-readable spec is published for
+      download.
+  transports:
+  - protocol: SOAP
+    scheme: https
+    documented: true
+    note: Gateway accepts SOAP v1.1 XML messages over HTTPS (Direct integration).
+  - protocol: HTTP-FORM-POST
+    scheme: https
+    documented: true
+    note: Gateway Hosted and Direct/Transparent-Redirect flows use HTTPS form-POST.
+  - protocol: REST
+    scheme: https
+    baseURL: https://takepayments-integrated-prod-apim.azure-api.net/
+    documented: true
+    note: Terminal API is REST/JSON on Azure API Management.
+  auth:
+  - product: Gateway API
+    scheme: merchant-id + pre-shared-key signature hash
+    documented: true
+  - product: Terminal API
+    scheme: OAuth 2.0 client-credentials (Microsoft Azure AD)
+    documented: true
+    tokenEndpointSandbox: https://login.microsoftonline.com/cf77fc4a-626b-46ff-bd3a-3400a727352f/oauth2/v2.0/token
+    tokenEndpointProduction: https://login.microsoftonline.com/0bdad8b5-fe48-4ccd-b807-e6b2662a6d0c/oauth2/v2.0/token
+    header: 'Authorization: Bearer {{JWT token}}'
+  webhooks:
+    documented: false
+    note: No webhook/event catalog or AsyncAPI found on either developer surface.
+  postman:
+    documented: false
+  githubOrganization:
+    url: https://github.com/takepayments
+    exists: true
+    publicRepos: 0
+  onboarding: sales-led (merchant account required; not open self-serve API signup)
+sources:
+- url: https://www.takepayments.com/developer-support/
+  type: Documentation
+  httpStatus: 200
+  note: Developer Support hub for the online payment gateway (Hosted + Direct).
+- url: https://www.takepayments.com/developer-support/resources/
+  type: Documentation
+  httpStatus: 200
+  note: Integration guides, Hosted/Direct code packs, graphics pack.
+- url: https://developer.takepayments.com/
+  type: DeveloperPortal
+  httpStatus: 200
+  note: takepayments Developer Toolkit — Terminal APIs and Online SDKs.
+- url: https://developer.takepayments.com/apis
+  type: APIReference
+  httpStatus: 200
+  note: Terminal API reference (Start Transaction, Pairing, Split Bill, Pay at Table).
+- url: https://developer.takepayments.com/documentation/authentication
+  type: Authentication
+  httpStatus: 200
+  note: Terminal API OAuth2 client-credentials via Azure AD; sandbox+prod base URLs.
+- url: https://mapi.takepayments.com/media/mtapfhfn/takepayments-gateway-integration-guide_v3-02_07-22.pdf
+  type: IntegrationGuide
+  httpStatus: 200
+  note: Gateway integration guide v3.02 (PDF).
+- url: https://takepayments-integrated-prod-apim.azure-api.net/
+  type: BaseURL
+  httpStatus: 401
+  note: Terminal API production host — live, returns 401 without a bearer token.
+actions:
+  openapiHarvested: false
+  specsSaved: 0
+  reason: >-
+    No downloadable OpenAPI/Swagger/Postman/GraphQL/gRPC/AsyncAPI artifact is
+    published by takepayments on either developer surface as of the review date.
+    The Gateway is a SOAP/form-POST rail documented via PDF; the Terminal API is
+    a REST surface documented as HTML only. Identity and the two documented API
+    products were captured faithfully; nothing was fabricated.

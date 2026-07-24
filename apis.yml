@@ -1,0 +1,127 @@
+aid: takepayments
+url: https://raw.githubusercontent.com/api-evangelist/takepayments/refs/heads/main/apis.yml
+name: takepayments
+kind: company
+description: >-
+  takepayments (a trading name of Payzone UK Limited) is a United Kingdom
+  payment gateway and merchant-services provider that lets businesses accept
+  card payments online, in person, and over the phone. Its online payment
+  gateway offers Hosted (redirect) and Direct (server-to-server) integrations
+  for e-commerce checkouts, delivered as SOAP v1.1 XML and HTTPS form-POST
+  requests authenticated with a merchant ID and a pre-shared-key signature
+  hash, alongside ready-made shopping-cart plugins and backend SDK code packs.
+  Its newer Terminal API is a modern REST/JSON surface hosted on Azure API
+  Management, secured with OAuth 2.0 client-credentials via Microsoft Azure AD,
+  that pairs and drives card machines (Move5000, PAX A920 Pro) for
+  Start-Transaction, Pairing, Split Bill & Gratuity, and Pay at Table flows.
+  takepayments runs a real public developer portal at developer.takepayments.com
+  but does not publish a downloadable OpenAPI/Swagger definition; its API
+  reference is documentation-only, and merchant onboarding is sales-led rather
+  than open self-serve.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- Payments
+- United Kingdom
+- Payment Gateway
+- Payment Processing
+- Card Payments
+- Card Machines
+- In-Person Payments
+- Ecommerce
+- PSP
+- Acquiring
+created: '2026-07-24'
+modified: '2026-07-24'
+specificationVersion: '0.19'
+apis:
+- aid: takepayments:takepayments-gateway-api
+  name: takepayments Gateway API
+  description: >-
+    The takepayments online payment gateway for accepting card payments in an
+    e-commerce checkout, offered as two integration methods: Hosted (the
+    customer is redirected to a secure takepayments payment form and returned to
+    the merchant site) and Direct (server-to-server / transparent redirect where
+    the customer stays on the merchant site). Requests are SOAP v1.1 XML and
+    HTTPS form-POST messages authenticated with a merchant ID and a pre-shared
+    key signature hash. No downloadable OpenAPI/Swagger is published; the
+    reference is the PDF integration guide plus Hosted/Direct code packs.
+  humanURL: https://www.takepayments.com/developer-support/
+  tags:
+  - Payment Gateway
+  - Card Payments
+  - Ecommerce
+  - Hosted Payment Page
+  - Direct Integration
+  properties:
+  - type: Documentation
+    url: https://www.takepayments.com/developer-support/
+  - type: Documentation
+    url: https://www.takepayments.com/developer-support/resources/
+  - type: IntegrationGuide
+    url: https://mapi.takepayments.com/media/mtapfhfn/takepayments-gateway-integration-guide_v3-02_07-22.pdf
+  - type: SDK
+    url: https://mapi.takepayments.com/media/auilrieh/direct.zip
+  - type: SDK
+    url: https://mapi.takepayments.com/media/oetnwi1n/hosted.zip
+  - type: Plugins
+    url: https://www.takepayments.com/developer-support/shopping-carts/
+- aid: takepayments:takepayments-terminal-api
+  name: takepayments Terminal API
+  description: >-
+    A REST/JSON API hosted on Azure API Management for pairing and driving
+    takepayments card machines (Move5000, PAX A920 Pro) from an integrated app
+    or POS. Documented operations include Authentication, Start a Transaction,
+    Pairing a Terminal, Split Bill & Gratuity, and Pay at Table. Authentication
+    is OAuth 2.0 client-credentials issued by Microsoft Azure AD, with the JWT
+    passed as an Authorization Bearer header. Sandbox and production base URLs
+    are published on the developer portal; no downloadable OpenAPI/Swagger is
+    provided.
+  humanURL: https://developer.takepayments.com/apis
+  baseURL: https://takepayments-integrated-prod-apim.azure-api.net/
+  tags:
+  - Terminal API
+  - In-Person Payments
+  - Card Machines
+  - Pay at Table
+  - REST
+  properties:
+  - type: Documentation
+    url: https://developer.takepayments.com/
+  - type: APIReference
+    url: https://developer.takepayments.com/apis
+  - type: Authentication
+    url: https://developer.takepayments.com/documentation/authentication
+  - type: Documentation
+    url: https://developer.takepayments.com/documentation/Start-Transaction
+  - type: SDK
+    url: https://developer.takepayments.com/online-sdk
+common:
+- type: Website
+  url: https://www.takepayments.com/
+- type: DeveloperPortal
+  url: https://developer.takepayments.com/
+- type: Documentation
+  url: https://www.takepayments.com/developer-support/
+- type: APIReference
+  url: https://developer.takepayments.com/apis
+- type: SDK
+  url: https://developer.takepayments.com/online-sdk
+- type: Plugins
+  url: https://www.takepayments.com/developer-support/shopping-carts/
+- type: GitHubOrganization
+  url: https://github.com/takepayments
+- type: LinkedIn
+  url: https://www.linkedin.com/company/takepayments-limited/
+- type: Blog
+  url: https://www.takepayments.com/blog/
+- type: Support
+  url: https://www.takepayments.com/partner-support/
+- type: ContactUs
+  url: https://www.takepayments.com/contact-us/
+- type: TermsOfService
+  url: https://www.takepayments.com/terms-and-conditions/
+- type: PrivacyPolicy
+  url: https://www.takepayments.com/privacy-policy/
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com
