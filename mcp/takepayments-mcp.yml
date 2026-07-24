@@ -1,0 +1,38 @@
+generated: '2026-07-24'
+method: derived
+status: candidate
+source: >-
+  Derived from documented takepayments Terminal API operations at
+  https://developer.takepayments.com/apis (no OpenAPI is published, so tool
+  inputSchemas are inferred from documented request fields, not a spec). No
+  official/hosted takepayments MCP server was found.
+server:
+  name: takepayments-terminal
+  transport: http
+  url: null
+  note: Candidate only. No hosted MCP server exists; this is a proposed mapping of the documented Terminal API.
+tools:
+- name: start_transaction
+  description: Start a card-machine sale on a paired terminal; returns transactionID + ResourceUrl to poll.
+  source_operation: 'POST /Terminal/{tid}/Sale/'
+  inputs: [tid, amount]
+- name: get_transaction_status
+  description: Poll a transaction ResourceUrl for its current status until completion (returns Receipts on completion).
+  source_operation: 'GET {ResourceUrl}'
+  inputs: [resourceUrl]
+- name: get_receipt
+  description: Retrieve an HTML merchant or customer receipt for a completed transaction.
+  source_operation: 'GET /Transaction/Receipt/{TransactionId}/{ReceiptId}'
+  inputs: [transactionId, receiptId]
+- name: pair_terminal
+  description: Pair a card machine (Move5000 / PAX A920 Pro) with the integrated app.
+  source_operation: Pairing a Terminal (documented feature; path not published)
+  inputs: []
+- name: split_bill_gratuity
+  description: Split a bill and apply gratuity across a terminal transaction.
+  source_operation: Split Bill & Gratuity (documented feature; path not published)
+  inputs: []
+- name: pay_at_table
+  description: Drive a Pay at Table flow on the terminal.
+  source_operation: Pay at Table (documented feature; path not published)
+  inputs: []

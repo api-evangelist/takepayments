@@ -96,6 +96,8 @@ apis:
   - type: SDK
     url: https://developer.takepayments.com/online-sdk
 common:
+- type: DomainSecurity
+  url: security/takepayments-domain-security.yml
 - type: Website
   url: https://www.takepayments.com/
 - type: DeveloperPortal
@@ -122,6 +124,32 @@ common:
   url: https://www.takepayments.com/terms-and-conditions/
 - type: PrivacyPolicy
   url: https://www.takepayments.com/privacy-policy/
+- type: Pricing
+  url: https://www.takepayments.com/card-machines/
+- type: Authentication
+  url: authentication/takepayments-authentication.yml
+- type: WellKnown
+  url: well-known/takepayments-well-known.yml
+- type: Conventions
+  url: conventions/takepayments-conventions.yml
+- type: Sandbox
+  url: sandbox/takepayments-sandbox.yml
+- type: Packages
+  url: packages/takepayments-packages.yml
+- type: SDKs
+  url: packages/takepayments-packages.yml
+- type: Conformance
+  url: conformance/takepayments-conformance.yml
+- type: Compliance
+  url: https://www.takepayments.com/pci-compliance/
+- type: ErrorCatalog
+  url: errors/takepayments-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/takepayments-lifecycle.yml
+- type: MCPServer
+  url: mcp/takepayments-mcp.yml
+- type: LLMsTxt
+  url: llms/takepayments-llms.txt
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com

@@ -1,0 +1,36 @@
+# takepayments
+
+> takepayments (a trading name of Payzone UK Limited) is a UK payment gateway and merchant-services provider for accepting card payments online, in person, and over the phone. It offers a legacy online payment Gateway API (Hosted redirect + Direct server-to-server, SOAP v1.1 XML / HTTPS form-POST, merchant-ID + pre-shared-key signature auth) and a modern REST/JSON Terminal API on Azure API Management (OAuth 2.0 client-credentials via Microsoft Azure AD) that pairs and drives card machines (Move5000, PAX A920 Pro). No downloadable OpenAPI is published; the reference is documentation-only.
+
+## APIs
+- [takepayments Gateway API](https://www.takepayments.com/developer-support/): Hosted + Direct online card-payment integrations (SOAP/form-POST).
+- [takepayments Terminal API](https://developer.takepayments.com/apis): REST/JSON card-machine control (Start Transaction, Pairing, Split Bill & Gratuity, Pay at Table).
+
+## Authentication
+- [Terminal API auth](https://developer.takepayments.com/documentation/authentication): OAuth 2.0 client-credentials, Azure AD. Token: https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token — scope `https://takepaymentsintegratedprod.onmicrosoft.com/{ClientId}/.default` — header `Authorization: Bearer {JWT}`.
+- Prod tenant: takepaymentsintegratedprod.onmicrosoft.com; Sandbox tenant: takepaymentsintegrated.onmicrosoft.com.
+
+## Docs
+- [Developer portal](https://developer.takepayments.com/)
+- [API reference](https://developer.takepayments.com/apis)
+- [Start a Transaction](https://developer.takepayments.com/documentation/Start-Transaction)
+- [Developer support / resources](https://www.takepayments.com/developer-support/resources/)
+- [Gateway integration guide (PDF)](https://mapi.takepayments.com/media/mtapfhfn/takepayments-gateway-integration-guide_v3-02_07-22.pdf)
+- [Shopping cart plugins](https://www.takepayments.com/developer-support/shopping-carts/)
+- [PCI compliance](https://www.takepayments.com/pci-compliance/)
+
+## Base URLs
+- Terminal API production: https://takepayments-integrated-prod-apim.azure-api.net/
+- Terminal API sandbox: https://takepayments-integrated-sandbox-apim.azure-api.net/
+
+## Repo artifacts
+- authentication/takepayments-authentication.yml
+- conventions/takepayments-conventions.yml
+- sandbox/takepayments-sandbox.yml
+- packages/takepayments-packages.yml
+- conformance/takepayments-conformance.yml
+- errors/takepayments-problem-types.yml
+- lifecycle/takepayments-lifecycle.yml
+- mcp/takepayments-mcp.yml
+- well-known/takepayments-well-known.yml
+- security/takepayments-domain-security.yml

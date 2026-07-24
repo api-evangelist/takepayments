@@ -1,0 +1,25 @@
+generated: '2026-07-24'
+method: searched
+source: >-
+  https://www.takepayments.com/developer-support/resources/ integration guides
+  and https://developer.takepayments.com/
+apis:
+- api: takepayments Gateway API
+  versioning:
+    scheme: document-version
+    current: 'v1.1 / gateway v2.2.0'
+    note: >-
+      Integration guides are versioned (Direct API V1.1 - 16 Dec 2019; Getting
+      Started / gateway v2.2.0). SOAP surface is stable/legacy.
+- api: takepayments Terminal API
+  versioning:
+    scheme: not-documented
+    note: No public version segment or version header documented.
+deprecation:
+  policy: none-published
+  sunset_header: false
+sla:
+  published: false
+status_page:
+  url: null
+  note: No status.takepayments.com or public status page was found.

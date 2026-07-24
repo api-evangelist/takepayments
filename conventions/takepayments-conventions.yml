@@ -1,0 +1,55 @@
+generated: '2026-07-24'
+method: searched
+source: >-
+  https://developer.takepayments.com/documentation/authentication and
+  https://developer.takepayments.com/documentation/Start-Transaction
+apis:
+- api: takepayments Terminal API
+  base_urls:
+    production: https://takepayments-integrated-prod-apim.azure-api.net/
+    sandbox: https://takepayments-integrated-sandbox-apim.azure-api.net/
+  media_type: application/json
+  authentication:
+    style: oauth2-client-credentials
+    header: 'Authorization: Bearer {JWT}'
+    ref: authentication/takepayments-authentication.yml
+  async_pattern:
+    style: create-then-poll
+    description: >-
+      A transaction is created (e.g. POST /Terminal/{tid}/Sale/) and returns a
+      transactionID plus a ResourceUrl. The client polls the ResourceUrl with
+      GET requests to observe the transaction status until completion.
+    poll_interval_ms: 500
+    initial_404_expected: true
+    note: >-
+      A 404 on the ResourceUrl immediately after creation is expected (the
+      transaction record does not yet exist); a 200 with a status body follows
+      within a few seconds.
+  amount_format: 'xx.xx (decimal string, e.g. 10.50)'
+  idempotency:
+    supported: false
+    note: >-
+      No idempotency-key header or documented replay-safety contract was found
+      in the Terminal API documentation as of this capture.
+  pagination:
+    supported: false
+    note: No list/pagination surface is documented; the API is transaction- and terminal-scoped.
+  versioning:
+    scheme: not-documented
+    note: No API version segment or version header is documented for the Terminal API.
+  error_signalling:
+    style: http-status
+    note: >-
+      Errors are signalled with HTTP status codes (401 unauthorized on the
+      gateway, 404 while a transaction resource is not yet created). No RFC 9457
+      problem+json envelope is documented.
+    ref: errors/takepayments-problem-types.yml
+- api: takepayments Gateway API
+  transport: [SOAP v1.1 over HTTPS, HTTPS form-POST]
+  integration_methods: [Hosted (redirect), Direct (server-to-server / transparent redirect)]
+  authentication:
+    style: merchant-id + pre-shared-key signature hash
+    ref: authentication/takepayments-authentication.yml
+  idempotency:
+    supported: unknown
+    note: Legacy SOAP/form-POST surface; idempotency semantics not documented in the public integration guides.

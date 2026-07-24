@@ -1,0 +1,27 @@
+generated: '2026-07-24'
+method: searched
+source: >-
+  https://www.takepayments.com/pci-compliance/ and
+  https://developer.takepayments.com/documentation/authentication
+standards:
+- id: pci-dss
+  conforms: true
+  evidence: >-
+    takepayments (Payzone UK Limited) is a card-payment gateway and
+    merchant-services provider and publishes a dedicated PCI compliance program
+    at https://www.takepayments.com/pci-compliance/ (incl. PCI DSS 4.0 support).
+    Operating as a card acquirer/PSP requires PCI DSS compliance.
+- id: oauth2
+  conforms: true
+  evidence: Terminal API uses OAuth 2.0 client-credentials (documented).
+- id: oidc
+  conforms: true
+  evidence: >-
+    Terminal API tenants expose Azure AD OpenID Connect discovery documents
+    (well-known/takepayments-openid-configuration-prod.json + sandbox).
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: No application/problem+json error envelope is documented.
+- id: soc2
+  conforms: unknown
+  evidence: No public SOC 2 report or trust center was found.

@@ -1,0 +1,33 @@
+generated: '2026-07-24'
+method: searched
+source: >-
+  https://developer.takepayments.com/documentation/authentication and the Azure
+  API Management sandbox developer portal
+  (https://takepayments-integrated-sandbox-apim.developer.azure-api.net/)
+environments:
+- name: sandbox
+  api: takepayments Terminal API
+  api_base_url: https://takepayments-integrated-sandbox-apim.azure-api.net/
+  developer_portal: https://takepayments-integrated-sandbox-apim.developer.azure-api.net/
+  auth_tenant: takepaymentsintegrated.onmicrosoft.com
+  token_endpoint: https://login.microsoftonline.com/cf77fc4a-626b-46ff-bd3a-3400a727352f/oauth2/v2.0/token
+  note: >-
+    Separate sandbox Azure AD tenant and APIM host. Merchants are issued a
+    distinct sandbox client_id/client_secret/scope for integration testing
+    before promotion to production.
+- name: production
+  api: takepayments Terminal API
+  api_base_url: https://takepayments-integrated-prod-apim.azure-api.net/
+  auth_tenant: takepaymentsintegratedprod.onmicrosoft.com
+  token_endpoint: https://login.microsoftonline.com/0bdad8b5-fe48-4ccd-b807-e6b2662a6d0c/oauth2/v2.0/token
+test_data:
+  note: >-
+    takepayments does not publish open magic test card numbers on the public
+    developer portal; sandbox credentials and any test cards are provisioned to
+    the merchant on onboarding. No verbatim test values are recorded here to
+    avoid fabrication.
+gateway_api:
+  note: >-
+    The online payment Gateway API (Hosted/Direct) is tested with merchant test
+    credentials supplied in the integration guide code packs rather than a
+    public shared sandbox key.

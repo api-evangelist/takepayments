@@ -1,0 +1,42 @@
+generated: '2026-07-24'
+method: searched
+source: >-
+  Azure AD OIDC discovery for the takepayments Terminal API OAuth 2.0
+  client-credentials tenants (documented on
+  https://developer.takepayments.com/documentation/authentication). No
+  /.well-known/security.txt, api-catalog, or ai-plugin.json is published on the
+  takepayments.com, developer.takepayments.com, or APIM hosts.
+hosts:
+- host: https://login.microsoftonline.com/0bdad8b5-fe48-4ccd-b807-e6b2662a6d0c
+  note: Terminal API production Azure AD tenant (takepaymentsintegratedprod.onmicrosoft.com)
+  documents:
+  - path: /v2.0/.well-known/openid-configuration
+    status: 200
+    file: takepayments-openid-configuration-prod.json
+- host: https://login.microsoftonline.com/cf77fc4a-626b-46ff-bd3a-3400a727352f
+  note: Terminal API sandbox Azure AD tenant (takepaymentsintegrated.onmicrosoft.com)
+  documents:
+  - path: /v2.0/.well-known/openid-configuration
+    status: 200
+    file: takepayments-openid-configuration-sandbox.json
+- host: https://takepayments-integrated-prod-apim.azure-api.net
+  note: Terminal API production gateway (Azure API Management)
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+- host: https://developer.takepayments.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+- host: https://www.takepayments.com
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404

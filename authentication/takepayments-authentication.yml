@@ -1,0 +1,44 @@
+generated: '2026-07-24'
+method: searched
+source: https://developer.takepayments.com/documentation/authentication
+summary:
+  types: [oauth2, apiKey]
+  oauth2_flows: [clientCredentials]
+  api_key_in: [header]
+  note: >-
+    Two distinct APIs with two distinct auth models. The modern Terminal API
+    uses OAuth 2.0 client-credentials issued by Microsoft Azure AD (JWT bearer).
+    The legacy online payment Gateway API authenticates each SOAP/form-POST
+    message with a merchant ID plus a pre-shared-key signature hash (not a
+    bearer token).
+schemes:
+- name: TerminalApiOAuth2
+  api: takepayments Terminal API
+  type: oauth2
+  flow: clientCredentials
+  identity_provider: Microsoft Azure AD / Azure AD B2C
+  token_endpoints:
+    production: https://login.microsoftonline.com/0bdad8b5-fe48-4ccd-b807-e6b2662a6d0c/oauth2/v2.0/token
+    sandbox: https://login.microsoftonline.com/cf77fc4a-626b-46ff-bd3a-3400a727352f/oauth2/v2.0/token
+  tenants:
+    production: takepaymentsintegratedprod.onmicrosoft.com
+    sandbox: takepaymentsintegrated.onmicrosoft.com
+  scope_format: 'https://takepaymentsintegratedprod.onmicrosoft.com/{ClientId}/.default'
+  credentials: [client_id, client_secret, scope]
+  request_header: 'Authorization: Bearer {JWT}'
+  api_hosts:
+    production: https://takepayments-integrated-prod-apim.azure-api.net/
+    sandbox: https://takepayments-integrated-sandbox-apim.azure-api.net/
+  discovery:
+  - well-known/takepayments-openid-configuration-prod.json
+  - well-known/takepayments-openid-configuration-sandbox.json
+  sources: [https://developer.takepayments.com/documentation/authentication]
+- name: GatewayMerchantSignature
+  api: takepayments Gateway API
+  type: apiKey
+  in: body
+  mechanism: >-
+    Merchant ID plus a pre-shared-key (PSK) signature hash computed over the
+    request fields; sent inside the SOAP v1.1 XML / HTTPS form-POST message
+    rather than an HTTP header.
+  sources: [https://www.takepayments.com/developer-support/]

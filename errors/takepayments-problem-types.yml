@@ -1,0 +1,34 @@
+generated: '2026-07-24'
+method: derived
+format: http-status
+source: >-
+  Derived from documented HTTP behaviour on
+  https://developer.takepayments.com/documentation/Start-Transaction and the
+  Azure AD / APIM OAuth gateway. takepayments does not publish an RFC 9457
+  problem+json catalogue; these are the HTTP statuses the documentation
+  describes.
+problems:
+- status: 401
+  title: Unauthorized
+  description: >-
+    Missing or invalid OAuth 2.0 bearer token at the Terminal API gateway
+    (Azure API Management). Returned by the APIM host when the JWT is absent,
+    expired, or issued for the wrong tenant/scope.
+  source: developer.takepayments.com/documentation/authentication
+- status: 404
+  title: Transaction resource not yet available
+  description: >-
+    Expected transient response when polling a transaction ResourceUrl
+    immediately after creation; the record is not yet materialised. Clients poll
+    (~500ms) until a 200 is returned.
+  source: developer.takepayments.com/documentation/Start-Transaction
+- status: 200
+  title: Transaction status body
+  description: >-
+    Successful poll returns the transaction details including a status field and,
+    on completion, a Receipts array.
+  source: developer.takepayments.com/documentation/Start-Transaction
+note: >-
+  The legacy online payment Gateway API returns its own numeric response/result
+  codes inside the SOAP/form-POST response body (documented in the Direct API
+  integration guide PDF, not machine-readable here).

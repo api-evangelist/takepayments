@@ -1,0 +1,44 @@
+generated: '2026-07-24'
+method: searched
+source: >-
+  https://www.takepayments.com/developer-support/resources/ and
+  https://www.takepayments.com/developer-support/shopping-carts/
+note: >-
+  takepayments distributes first-party client libraries as downloadable code
+  packs and e-commerce plugins rather than via public package registries. No
+  first-party package was found on npm, PyPI, Packagist, NuGet, or RubyGems (the
+  takepayments Packagist vendor namespace is empty). The libraries below are
+  genuinely first-party but delivered as ZIP downloads / on request.
+packages:
+- language: php
+  distribution: code-pack
+  name: takepayments Gateway - Direct (server-to-server) code pack
+  url: https://mapi.takepayments.com/media/auilrieh/direct.zip
+  official: true
+- language: php
+  distribution: code-pack
+  name: takepayments Gateway - Hosted (redirect) code pack
+  url: https://mapi.takepayments.com/media/oetnwi1n/hosted.zip
+  official: true
+- language: javascript
+  distribution: code-pack
+  name: takepayments CS-NodeJS-SDK
+  url: https://www.takepayments.com/developer-support/shopping-carts/
+  official: true
+  note: NodeJS server-side SDK for the online payment gateway, listed on the shopping-carts page.
+plugins:
+  note: >-
+    First-party e-commerce modules for the online payment Gateway API, requested
+    via welcomeecom@takepayments.com; distributed as platform-specific packages,
+    not registry packages.
+  platforms:
+  - {platform: WooCommerce, versions: null}
+  - {platform: Magento, versions: ['2.4']}
+  - {platform: OpenCart, versions: ['1.5', '2.1', '2.3', '3']}
+  - {platform: PrestaShop, versions: ['1.6', '1.7']}
+  - {platform: Drupal Commerce, versions: ['7', '8']}
+  - {platform: nopCommerce, versions: null}
+  - {platform: Shopware, versions: null}
+  - {platform: Zen Cart, versions: null}
+  - {platform: WHMCS, versions: null}
+  index_url: https://www.takepayments.com/developer-support/shopping-carts/
