@@ -24,11 +24,6 @@ takepayments (a trading name of Payzone UK Limited) is a United Kingdom payment 
 
 ## APIs
 
-### takepayments Gateway API
-
-The takepayments online payment gateway for accepting card payments in an e-commerce checkout, offered as two integration methods: Hosted (the customer is redirected to a secure takepayments payment form and returned to the merchant site) and Direct (server-to-server / transparent redirect where the customer stays on the merchant site). Requests are SOAP v1.1 XML and HTTPS form-POST messages authenticated with a merchant ID and a pre-shared-key signature hash. No downloadable OpenAPI/Swagger is published — the reference is a PDF integration guide plus Hosted/Direct code packs and shopping-cart plugins.
-
-- **Human URL:** [https://www.takepayments.com/developer-support/](https://www.takepayments.com/developer-support/)
 
 #### Tags
 
